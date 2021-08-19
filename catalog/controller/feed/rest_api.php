@@ -358,6 +358,17 @@ class ControllerFeedRestApi extends RestController
             $special_formated = $this->currency->format($this->tax->calculate($product['special'], $product['tax_class_id'], $this->config->get('config_tax')), $this->currency->getRestCurrencyCode());
         }
 
+        $in_wishlist = false;
+
+        if ($this->customer->getId()) {
+            $this->load->model('account/customer');
+            $customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
+            $wishlist = unserialize($customer_info['wishlist']);
+            if (in_array((int)$product['product_id'], $wishlist)) {
+                $in_wishlist = true;
+            }
+        }
+
         $retval = array(
             'id' => (int)$product['product_id'],
             'product_id' => (int)$product['product_id'],
@@ -421,7 +432,8 @@ class ControllerFeedRestApi extends RestController
             'category' => $productCategories,
             'quantity' => !empty($product['quantity']) ? (int)$product['quantity'] : 0,
             'reviews' => $reviews,
-            'recurrings' => $recurringDetails
+            'recurrings' => $recurringDetails,
+            'in_wishlist' => $in_wishlist
         );
 
         if (!empty($customFields)) {
