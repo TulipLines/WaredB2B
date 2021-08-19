@@ -1060,7 +1060,8 @@ class ControllerFeedRestApi extends RestController
             if (isset($this->request->get['id']) && ctype_digit($this->request->get['id'])) {
                 $this->getManufacturer($this->request->get['id']);
             } elseif (isset($this->request->get['category']) && ctype_digit($this->request->get['category'])) {
-                $this->listManufacturersByCategory($this->request->get['category']);
+//                $this->listManufacturersByCategory($this->request->get['category']);
+                $this->listManufacturers();
             } else {
                 //get manufacturers list
                 $this->listManufacturers();
