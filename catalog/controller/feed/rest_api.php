@@ -1060,8 +1060,7 @@ class ControllerFeedRestApi extends RestController
             if (isset($this->request->get['id']) && ctype_digit($this->request->get['id'])) {
                 $this->getManufacturer($this->request->get['id']);
             } elseif (isset($this->request->get['category']) && ctype_digit($this->request->get['category'])) {
-//                $this->listManufacturersByCategory($this->request->get['category']);
-                $this->listManufacturers();
+                $this->listManufacturersByCategory($this->request->get['category']);
             } else {
                 //get manufacturers list
                 $this->listManufacturers();
@@ -1154,8 +1153,9 @@ class ControllerFeedRestApi extends RestController
         // not active
 //        $data['start'] = 0;
 //        $data['limit'] = 1000;
+        echo $category_id;
 
-        $results = $this->model_catalog_manufacturer->getManufacturerByCategory($data);
+        $results = $this->model_catalog_manufacturer->getManufacturerByCategory($category_id);
 
         if (!empty($results)) {
             foreach ($results as $manufacturer) {
