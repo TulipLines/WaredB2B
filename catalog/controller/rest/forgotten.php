@@ -73,10 +73,9 @@ class ControllerRestForgotten extends RestController
      * */
     public function reset()
     {
+
         $this->checkPlugin();
 
-        echo "FFFF";
-        return;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -104,9 +103,6 @@ class ControllerRestForgotten extends RestController
             $this->allowedHeaders = array("POST");
         }
 
-
-        $this->json["error"] = "Test";
-
         return $this->sendResponse();
 
     }
@@ -116,9 +112,9 @@ class ControllerRestForgotten extends RestController
     {
         $error = array();
         if (!isset($post['code'])) {
-            $error[] = "Test";
+            $error[] = $this->language->get('error_code');
         } elseif (!$this->model_account_customer->getCustomerByCode($post['code'])) {
-            $error[] = "Test";
+            $error[] = $this->language->get('error_code');
         }
 
         if ((utf8_strlen(html_entity_decode($post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
