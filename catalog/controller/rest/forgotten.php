@@ -112,9 +112,9 @@ class ControllerRestForgotten extends RestController
     {
         $error = array();
         if (!isset($post['code'])) {
-            $error[] = $this->language->get('error_code');
+            $error[] = "Test";
         } elseif (!$this->model_account_customer->getCustomerByCode($post['code'])) {
-            $error[] = $this->language->get('error_code');
+            $error[] = "Test";
         }
 
         if ((utf8_strlen(html_entity_decode($post['password'], ENT_QUOTES, 'UTF-8')) < 4) || (utf8_strlen(html_entity_decode($post['password'], ENT_QUOTES, 'UTF-8')) > 40)) {
