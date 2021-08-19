@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31463696-d3fe-4370-b761-dbe19d6554cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/catalog/controller/rest/forgotten.php" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/controller/rest/forgotten.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/controller/feed/rest_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/controller/feed/rest_api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog/model/catalog/manufacturer.php" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/model/catalog/manufacturer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1629363093331</updated>
-      <workItem from="1629363094419" duration="4154000" />
+      <workItem from="1629363094419" duration="5931000" />
     </task>
     <servers />
   </component>
@@ -80,5 +83,9 @@
       <screen x="0" y="25" width="1440" height="803" />
     </state>
     <state x="100" y="125" width="1240" height="598" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.1440.803@0.25.1440.803" timestamp="1629371205957" />
+    <state x="421" y="179" width="597" height="490" key="find.popup" timestamp="1629372901601">
+      <screen x="0" y="25" width="1440" height="803" />
+    </state>
+    <state x="421" y="179" width="597" height="490" key="find.popup/0.25.1440.803@0.25.1440.803" timestamp="1629372901601" />
   </component>
 </project>

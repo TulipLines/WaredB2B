@@ -132,6 +132,8 @@ RewriteRule ^api/rest/categories/extended/limit/?([0-9]+)/page/?([0-9]+) index.p
 #REST API categories
 RewriteRule ^api/rest/categories index.php?route=feed/rest_api/categories [L]
 #######################################MANUFACTURER#################################################################
+#REST API manufacturers By Category
+RewriteRule ^api/rest/manufacturers/cateogry/?([0-9]+) index.php?route=feed/rest_api/manufacturers&category=$1  [L]
 #REST API selected manufacturer
 RewriteRule ^api/rest/manufacturers/?([0-9]+) index.php?route=feed/rest_api/manufacturers&id=$1  [L]
 #REST API manufacturers

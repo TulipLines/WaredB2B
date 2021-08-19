@@ -1059,6 +1059,8 @@ class ControllerFeedRestApi extends RestController
             //get manufacturer details
             if (isset($this->request->get['id']) && ctype_digit($this->request->get['id'])) {
                 $this->getManufacturer($this->request->get['id']);
+            } elseif (isset($this->request->get['category']) && ctype_digit($this->request->get['category'])) {
+                $this->listManufacturersByCategory($this->request->get['category']);
             } else {
                 //get manufacturers list
                 $this->listManufacturers();
@@ -1121,6 +1123,38 @@ class ControllerFeedRestApi extends RestController
         $data['limit'] = 1000;
 
         $results = $this->model_catalog_manufacturer->getManufacturers($data);
+
+        if (!empty($results)) {
+            foreach ($results as $manufacturer) {
+                $this->json["data"][] = $this->getManufacturerInfo($manufacturer);
+            }
+        }
+
+        if($this->includeMeta) {
+            $this->response->addHeader('X-Total-Count: ' . count($this->json['data']));
+            $this->response->addHeader('X-Pagination-Limit: 1000');
+            $this->response->addHeader('X-Pagination-Page: 1');
+//            $data = $this->json['data'];
+//
+//            $this->json['data'] = array(
+//                'totalrowcount' => count($data),
+//                'pagenumber'    => 1,
+//                'pagesize'      => 1000,
+//                'items'         => $data
+//            );
+        }
+    }
+
+    public function listManufacturersByCategory($category_id)
+    {
+        $this->load->model('catalog/manufacturer');
+        $this->load->model('tool/image');
+
+        // not active
+//        $data['start'] = 0;
+//        $data['limit'] = 1000;
+
+        $results = $this->model_catalog_manufacturer->getManufacturerByCategory($category_id);
 
         if (!empty($results)) {
             foreach ($results as $manufacturer) {
