@@ -1154,13 +1154,14 @@ class ControllerFeedRestApi extends RestController
 //        $data['start'] = 0;
 //        $data['limit'] = 1000;
 
-        $results = $this->model_catalog_manufacturer->getManufacturerByCategory($category_id);
+        $results = $this->model_catalog_manufacturer->getManufacturerByCategory($data);
 
         if (!empty($results)) {
             foreach ($results as $manufacturer) {
                 $this->json["data"][] = $this->getManufacturerInfo($manufacturer);
             }
         }
+        $this->json['data'][] = "Test";
 
         if($this->includeMeta) {
             $this->response->addHeader('X-Total-Count: ' . count($this->json['data']));
