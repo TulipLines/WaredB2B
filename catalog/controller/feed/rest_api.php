@@ -1153,30 +1153,30 @@ class ControllerFeedRestApi extends RestController
         // not active
 //        $data['start'] = 0;
 //        $data['limit'] = 1000;
-        echo $category_id;
+
 
         $results = $this->model_catalog_manufacturer->getManufacturerByCategory($category_id);
-
-        if (!empty($results)) {
-            foreach ($results as $manufacturer) {
-                $this->json["data"][] = $this->getManufacturerInfo($manufacturer);
-            }
-        }
-        $this->json['data'][] = "Test";
-
-        if($this->includeMeta) {
-            $this->response->addHeader('X-Total-Count: ' . count($this->json['data']));
-            $this->response->addHeader('X-Pagination-Limit: 1000');
-            $this->response->addHeader('X-Pagination-Page: 1');
-//            $data = $this->json['data'];
+        $this->json["data"] = $results;
+//        if (!empty($results)) {
+//            foreach ($results as $manufacturer) {
+//                $this->json["data"][] = $this->getManufacturerInfo($manufacturer);
+//            }
+//        }
 //
-//            $this->json['data'] = array(
-//                'totalrowcount' => count($data),
-//                'pagenumber'    => 1,
-//                'pagesize'      => 1000,
-//                'items'         => $data
-//            );
-        }
+//
+//        if($this->includeMeta) {
+//            $this->response->addHeader('X-Total-Count: ' . count($this->json['data']));
+//            $this->response->addHeader('X-Pagination-Limit: 1000');
+//            $this->response->addHeader('X-Pagination-Page: 1');
+////            $data = $this->json['data'];
+////
+////            $this->json['data'] = array(
+////                'totalrowcount' => count($data),
+////                'pagenumber'    => 1,
+////                'pagesize'      => 1000,
+////                'items'         => $data
+////            );
+//        }
     }
 
 
