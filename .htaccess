@@ -208,6 +208,7 @@ RewriteRule ^api/rest/sociallogin index.php?route=rest/login/socialLogin  [L]
 RewriteRule ^api/rest/logout index.php?route=rest/logout/logout  [L]
 #REST API forgotten password
 RewriteRule ^api/rest/forgotten index.php?route=rest/forgotten/forgotten  [L]
+RewriteRule ^api/rest/forgotten/reset index.php?route=rest/forgotten/reset  [L]
 #REST API multivendor registration
 RewriteRule ^api/rest/multivendor_signup index.php?route=rest/multivendor/register  [L]
 #REST API multivendor infos
