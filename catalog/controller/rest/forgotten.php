@@ -73,35 +73,39 @@ class ControllerRestForgotten extends RestController
      * */
     public function reset()
     {
-
         $this->checkPlugin();
 
+        $this->json["error"] = "Test";
+        $this->statusCode = 400;
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            if ($this->customer->isLogged()) {
-                $this->json['error'][] = "User is already logged";
-                $this->statusCode = 400;
-            } else {
-                $this->load->model('account/customer');
-                $this->load->language('account/reset');
 
-                $post = $this->getPost();
-                $error = $this->reset_validate($post);
-
-                if (empty($error)) {
-                    $customer_info = $this->model_account_customer->getCustomerByCode($post['code']);
-                    $this->model_account_customer->editPassword($customer_info['email'], $post['password']);
-
-                } else {
-                    $this->json["error"] = $error;
-                    $this->statusCode = 400;
-                }
-            }
-        } else {
-            $this->statusCode = 405;
-            $this->allowedHeaders = array("POST");
-        }
+//
+//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//
+//            if ($this->customer->isLogged()) {
+//                $this->json['error'][] = "User is already logged";
+//                $this->statusCode = 400;
+//            } else {
+//                $this->load->model('account/customer');
+//                $this->load->language('account/reset');
+//
+//                $post = $this->getPost();
+//                $error = $this->reset_validate($post);
+//
+//                if (empty($error)) {
+//                    $customer_info = $this->model_account_customer->getCustomerByCode($post['code']);
+//                    $this->model_account_customer->editPassword($customer_info['email'], $post['password']);
+//
+//                } else {
+//                    $this->json["error"] = $error;
+//                    $this->statusCode = 400;
+//                }
+//            }
+//        } else {
+//            $this->statusCode = 405;
+//            $this->allowedHeaders = array("POST");
+//        }
 
         return $this->sendResponse();
 
