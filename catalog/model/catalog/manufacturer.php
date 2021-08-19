@@ -60,9 +60,8 @@ class ModelCatalogManufacturer extends Model {
 
     public function getManufacturerByCategory($category_id) {
         $sql = "SELECT * FROM " . DB_PREFIX . "manufacturer m LEFT JOIN " . DB_PREFIX . "manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id)";
-        $sql .= " LEFT JOIN " . DB_PREFIX . "product p ON (m.manufacturer_id = p.manufacturer_id)";
-        $sql .= " LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2s.product_id)";
-        $sql .= " WHERE p2c.category_id = '" . (int)$category_id . "' AND m2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
+
+        $sql .= " WHERE  m2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
         $query = $this->db->query($sql);
 
