@@ -1157,13 +1157,11 @@ class ControllerFeedRestApi extends RestController
 
         $results = $this->model_catalog_manufacturer->getManufacturerByCategory($category_id);
 
-        $this->json["data"] = $results;
-
-//        if (!empty($results)) {
-//            foreach ($results as $manufacturer) {
-//                $this->json["data"][] = $this->getManufacturerInfo($manufacturer);
-//            }
-//        }
+        if (!empty($results)) {
+            foreach ($results as $manufacturer) {
+                $this->json["data"][] = $this->getManufacturerInfo($manufacturer);
+            }
+        }
 
 
         if($this->includeMeta) {
